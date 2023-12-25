@@ -2,6 +2,7 @@ using App.BUSINESS.DTOs.Brand;
 using App.BUSINESS.DTOs.Category;
 using App.BUSINESS.DTOs.Course;
 using App.BUSINESS.DTOs.Student;
+using App.BUSINESS.DTOs.Teacher;
 using App.BUSINESS.Services.Implementations;
 using App.BUSINESS.Services.Interfaces;
 using App.DAL.Context;
@@ -23,6 +24,11 @@ builder.Services.AddTransient<IValidator<CreateCategoryDto>, CategoryCreateDtoVa
 builder.Services.AddTransient<IValidator<UpdateCategoryDto>, CategoryUpdateDtoValidator>();
 builder.Services.AddTransient<IValidator<CreateStudentDto>, StudentCreateDtoValidator>();
 builder.Services.AddTransient<IValidator<UpdateStudentDto>, StudentUpdateDtoValidator>();
+builder.Services.AddTransient<IValidator<CreateTeacherDto>, TeacherCreateDtoValidator>();
+builder.Services.AddTransient<IValidator<UpdateTeacherDto>, TeacherUpdateDtoValidator>();
+builder.Services.AddTransient<IValidator<CreateCourseDto>, CourseCreateDtoValidator>();
+builder.Services.AddTransient<IValidator<UpdateCourseDto>, CourseUpdateDtoValidator>();
+
 
 builder.Services.AddControllers();
 builder.Services.AddDbContext<AppDbContext>(options =>

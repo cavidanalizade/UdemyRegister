@@ -22,6 +22,9 @@ namespace App.BUSINESS.DTOs.Course
                 .NotEmpty().WithMessage("Ttile adı mutleqdir.")
                 .MinimumLength(3).WithMessage("Title adı en az 3 herf olmalıdır.")
                 .MaximumLength(100).WithMessage("Category adı en cox 55 herf olmalıdır.");
+            RuleFor(x => x.Description)
+                .NotEmpty().WithMessage("Description bos qoula bilmez!")
+                .MinimumLength(15).WithMessage("Description en az 15 herfden ibaret olmalidir");
         }
     }
 }

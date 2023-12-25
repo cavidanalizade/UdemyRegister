@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace App.DAL.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20231225135119_createDb")]
-    partial class createDb
+    [Migration("20231225215900_addNullable")]
+    partial class addNullable
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -189,7 +189,7 @@ namespace App.DAL.Migrations
             modelBuilder.Entity("App.CORE.Entities.Category", b =>
                 {
                     b.HasOne("App.CORE.Entities.Category", "ParentCategory")
-                        .WithMany()
+                        .WithMany("ChildCategories")
                         .HasForeignKey("ParentCategoryId")
                         .OnDelete(DeleteBehavior.Restrict);
 
@@ -218,6 +218,11 @@ namespace App.DAL.Migrations
                     b.Navigation("Course");
 
                     b.Navigation("Student");
+                });
+
+            modelBuilder.Entity("App.CORE.Entities.Category", b =>
+                {
+                    b.Navigation("ChildCategories");
                 });
 
             modelBuilder.Entity("App.CORE.Entities.Course", b =>

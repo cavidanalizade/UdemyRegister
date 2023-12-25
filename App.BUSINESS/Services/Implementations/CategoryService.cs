@@ -30,31 +30,44 @@ namespace App.BUSINESS.Services.Implementations
             {
                 throw new Exception( "Duzgun format daxil edin");
             }
-            Category category = new Category()
+                if (createCategoryDto.ParentCategoryId != null)
+                {
+                    if (!_repo.Check((int)createCategoryDto.ParentCategoryId))
+                    {
+                        throw new Exception("Bele parent category movcud deyil");
+                    }
+                    Category category = new Category()
+                    {
+                        Name = createCategoryDto.Name,
+                        LogoUrl = createCategoryDto.LogoImg.UploadFile(folderName: "C:\\Users\\User\\Desktop\\Repos\\Udemy\\App.BUSINESS\\Upload\\"),
+                        ParentCategoryId=createCategoryDto.ParentCategoryId
+                    };
+
+                    await _repo.Create(category);
+                    _repo.Save();
+
+                }
+            Category category2 = new Category()
             {
                 Name = createCategoryDto.Name,
-                LogoUrl = createCategoryDto.LogoImg.UploadFile(folderName: "C:\\Users\\II novbe\\Desktop\\Api_project\\App.BUSINESS\\Upload\\"),
-                CreatedAt=DateTime.Now,
-
-                
-
-                
+                LogoUrl = createCategoryDto.LogoImg.UploadFile(folderName: "C:\\Users\\User\\Desktop\\Repos\\Udemy\\App.BUSINESS\\Upload\\"),
             };
-            await _repo.Create(category);
 
+            await _repo.Create(category2);
             _repo.Save();
+
         }
 
         public async Task Delete(int id)
         {
              _repo.delete(id);
-            _repo.Save();
         }
 
         public async Task<ICollection<Category>> GetAllAsync()
         {
             var categories = await _repo.GetAllAsync();
-             return await categories.ToListAsync(); 
+            var ParentCategories=categories.Where(x=>x.ParentCategoryId==null );
+             return await ParentCategories.ToListAsync(); 
         }
 
         public async Task<Category> GetById(int id)
@@ -73,17 +86,27 @@ namespace App.BUSINESS.Services.Implementations
         {
 
             if (updateCategoryDto == null) throw new Exception("Bad Request");
-
-            var existingCategory = await _repo.GetById(updateCategoryDto.Id);
-            existingCategory.Name = updateCategoryDto.Name;
-            if(updateCategoryDto.LogoImg != null)
+                var existingCategory = await _repo.GetById(updateCategoryDto.Id);
+            if (updateCategoryDto.ParentCategoryId != null)
             {
-                existingCategory.LogoUrl.RemoveFile("C:\\Users\\II novbe\\Desktop\\Api_project\\App.BUSINESS\\Upload\\");
-                existingCategory.LogoUrl = updateCategoryDto.LogoImg.UploadFile(folderName: "C:\\Users\\II novbe\\Desktop\\Api_project\\App.BUSINESS\\Upload\\");
-                existingCategory.UpdatedAt=DateTime.Now;
+                if (!_repo.Check((int)updateCategoryDto.ParentCategoryId))
+                {
+                    throw new Exception("Bele parent category movcud deyil");
+                }
+              
+                existingCategory.ParentCategoryId = updateCategoryDto.ParentCategoryId;
+
             }
+            existingCategory.Name = updateCategoryDto.Name;
+            if (updateCategoryDto.LogoImg != null)
+            {
+                existingCategory.LogoUrl.RemoveFile("C:\\Users\\User\\Desktop\\Repos\\Udemy\\App.BUSINESS\\Upload\\");
+                existingCategory.LogoUrl = updateCategoryDto.LogoImg.UploadFile(folderName: "C:\\Users\\User\\Desktop\\Repos\\Udemy\\App.BUSINESS\\Upload\\");
+            }
+
             _repo.Update(existingCategory);
-            _repo.Save();
+                _repo.Save();
+            
         }
         public async Task Restore()
         {

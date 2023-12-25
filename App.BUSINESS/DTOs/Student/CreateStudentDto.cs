@@ -26,7 +26,8 @@ namespace App.BUSINESS.DTOs.Student
                .NotEmpty().WithMessage("soyad mutleqdir.")
                .MinimumLength(3).WithMessage("soyad en az 3 herf olmalıdır.")
                .MaximumLength(100).WithMessage("soyad en cox 55 herf olmalıdır.");
-
+            RuleFor(x => x.Age)
+                .NotEmpty().WithMessage("yas mutleqdir");
         }
     }
 }

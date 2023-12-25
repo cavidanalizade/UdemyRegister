@@ -19,6 +19,7 @@ namespace App.DAL.Repositories.Interfaces
         Task Create(T entity);
         void Update(T entity);
         void delete(int id);
+        bool Check (int id);
         void deleteAll();
         void Restore();
 

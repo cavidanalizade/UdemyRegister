@@ -14,6 +14,8 @@ namespace App.BUSINESS.DTOs.Brand
     {
         public string? Name { get; set; }
         public IFormFile? LogoImg { get; set; }
+        public int? ParentCategoryId { get; set; }
+
 
 
     }

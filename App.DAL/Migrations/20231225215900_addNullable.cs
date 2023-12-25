@@ -4,7 +4,7 @@
 
 namespace App.DAL.Migrations
 {
-    public partial class NewFields : Migration
+    public partial class addNullable : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

@@ -1,4 +1,5 @@
-﻿using App.CORE.Entities.Common;
+﻿using App.CORE.Entities;
+using App.CORE.Entities.Common;
 using App.DAL.Context;
 using App.DAL.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
@@ -22,18 +23,33 @@ namespace App.DAL.Repositories.Implementations
 
         public DbSet<T> Table => _context.Set<T>();
 
+        public bool Check(int id)
+        {
+            if (Table.Any(x => x.Id == id && x.IsDeleted == false)) return true;
+            return false;
+        }
+
         public async Task Create(T entity)
         {
             await Table.AddAsync(entity);
         }
 
-        public void delete(int id)
+        public async void delete(int id)
         {
-            var category=Table.FirstOrDefault(b=>b.Id==id);
-            if (category != null)
+
+            if (Table.Any(x => x.Id == id && x.IsDeleted == false))
             {
-                category.IsDeleted = true;           
+                var entity= Table.FirstOrDefault(x => x.Id == id);
+                if (entity!= null)
+                entity.IsDeleted= true;
+                 Save();
+
             }
+            throw new Exception("Movcud deyil");
+
+
+
+
         }
 
         public void deleteAll()
@@ -64,7 +80,11 @@ namespace App.DAL.Repositories.Implementations
 
         public async Task<T> GetById(int id)
         {
-            return await Table.AsNoTracking().FirstOrDefaultAsync(b => b.Id == id);
+           if( Check(id) )
+            {
+                return await Table.AsNoTracking().FirstOrDefaultAsync(b => b.Id == id);
+            }
+            throw new Exception("Movcud deyil!");
         }
 
         public async Task<IQueryable<T>> RecycleBin(Expression<Func<T, bool>>? expression = null, params string[] includes)

@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace App.DAL.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20231225135646_NewFields")]
-    partial class NewFields
+    [Migration("20231225211330_CreateNewDb")]
+    partial class CreateNewDb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
