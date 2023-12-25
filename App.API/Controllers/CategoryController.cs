@@ -10,14 +10,14 @@ namespace App.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class BrandController : ControllerBase
+    public class CategoryController : ControllerBase
     {
         private readonly ICategoryService _service;
         private readonly IValidator<CreateCategoryDto> _validator;
         private readonly IValidator<UpdateCategoryDto> _validatorUpdate;
 
 
-        public BrandController(ICategoryService service , IValidator<CreateCategoryDto> validator , IValidator<UpdateCategoryDto> validatorUpdate)
+        public CategoryController(ICategoryService service , IValidator<CreateCategoryDto> validator , IValidator<UpdateCategoryDto> validatorUpdate)
         {
             _service = service;
             _validator = validator;

@@ -1,4 +1,5 @@
-﻿using FluentValidation;
+﻿using App.CORE.Entities.Common;
+using FluentValidation;
 using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
@@ -20,9 +21,9 @@ namespace App.BUSINESS.DTOs.Category
         public CategoryCreateDtoValidator()
         {
             RuleFor(x => x.Name)
-                .NotEmpty().WithMessage("Marka adı mutleqdir.")
-                .MinimumLength(3).WithMessage("Marka adı en az 3 herf olmalıdır.")
-                .MaximumLength(100).WithMessage("Marka adı en cox 55 herf olmalıdır.");
+                .NotEmpty().WithMessage("Category adı mutleqdir.")
+                .MinimumLength(3).WithMessage("Category adı en az 3 herf olmalıdır.")
+                .MaximumLength(100).WithMessage("Category adı en cox 55 herf olmalıdır.");
         }
     }
 }

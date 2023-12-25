@@ -1,4 +1,5 @@
-﻿using App.BUSINESS.DTOs.Category;
+﻿using App.BUSINESS.DTOs.BaseDtos;
+using App.BUSINESS.DTOs.Category;
 using FluentValidation;
 using Microsoft.AspNetCore.Http;
 using System;
@@ -9,11 +10,11 @@ using System.Threading.Tasks;
 
 namespace App.BUSINESS.DTOs.Brand
 {
-    public class UpdateCategoryDto
+    public class UpdateCategoryDto:BaseEntityDto
     {
-        public int Id { get; set; }
         public string? Name { get; set; }
         public IFormFile? LogoImg { get; set; }
+
 
     }
     public class CategoryUpdateDtoValidator : AbstractValidator<UpdateCategoryDto>

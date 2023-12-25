@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace App.DAL.Repositories.Implementations
 {
-    public class Repository<T> : IRepository<T> where T : BaseEntity, new()
+    public class Repository<T> : IRepository<T> where T : BaseAuditableEntity, new()
     {
         private readonly AppDbContext _context;
 

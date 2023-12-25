@@ -1,5 +1,7 @@
 using App.BUSINESS.DTOs.Brand;
 using App.BUSINESS.DTOs.Category;
+using App.BUSINESS.DTOs.Course;
+using App.BUSINESS.DTOs.Student;
 using App.BUSINESS.Services.Implementations;
 using App.BUSINESS.Services.Interfaces;
 using App.DAL.Context;
@@ -13,8 +15,14 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 builder.Services.AddScoped<ICategoryService, CategoryService>();
+builder.Services.AddScoped<IStudentRepository, StudentRepository>();
+builder.Services.AddScoped<IStudentService, StudentService>();
+
+
 builder.Services.AddTransient<IValidator<CreateCategoryDto>, CategoryCreateDtoValidator>();
 builder.Services.AddTransient<IValidator<UpdateCategoryDto>, CategoryUpdateDtoValidator>();
+builder.Services.AddTransient<IValidator<CreateStudentDto>, StudentCreateDtoValidator>();
+builder.Services.AddTransient<IValidator<UpdateStudentDto>, StudentUpdateDtoValidator>();
 
 builder.Services.AddControllers();
 builder.Services.AddDbContext<AppDbContext>(options =>

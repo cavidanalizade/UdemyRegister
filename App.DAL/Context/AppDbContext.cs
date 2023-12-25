@@ -19,9 +19,18 @@ namespace App.DAL.Context
         {
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
             base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<Category>()
+            .HasOne(c => c.ParentCategory)       
+            .WithMany(pc => pc.ChildCategories)     
+            .HasForeignKey(c => c.ParentCategoryId) 
+            .OnDelete(DeleteBehavior.Restrict);
         }
 
         public DbSet<Category> categories { get; set; }
+        public DbSet<Teacher> teachers { get; set; }
+        public DbSet<Student> students { get; set; }
+        public DbSet<Course> courses { get; set; }
+        public DbSet<StudentsCourses> studentsCourses { get; set; }
 
     }
 }

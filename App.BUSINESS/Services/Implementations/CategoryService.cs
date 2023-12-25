@@ -33,11 +33,15 @@ namespace App.BUSINESS.Services.Implementations
             Category category = new Category()
             {
                 Name = createCategoryDto.Name,
-                LogoUrl = createCategoryDto.LogoImg.UploadFile(folderName: "C:\\Users\\User\\Desktop\\Repos\\Api_Ntire\\App.BUSINESS\\Upload\\")
+                LogoUrl = createCategoryDto.LogoImg.UploadFile(folderName: "C:\\Users\\II novbe\\Desktop\\Api_project\\App.BUSINESS\\Upload\\"),
+                CreatedAt=DateTime.Now,
 
+                
 
+                
             };
             await _repo.Create(category);
+
             _repo.Save();
         }
 
@@ -74,8 +78,9 @@ namespace App.BUSINESS.Services.Implementations
             existingCategory.Name = updateCategoryDto.Name;
             if(updateCategoryDto.LogoImg != null)
             {
-                existingCategory.LogoUrl.RemoveFile("C:\\Users\\User\\Desktop\\Repos\\Api_Ntire\\App.BUSINESS\\Upload\\");
-                existingCategory.LogoUrl = updateCategoryDto.LogoImg.UploadFile(folderName: "C:\\Users\\User\\Desktop\\Repos\\Api_Ntire\\App.BUSINESS\\Upload\\");
+                existingCategory.LogoUrl.RemoveFile("C:\\Users\\II novbe\\Desktop\\Api_project\\App.BUSINESS\\Upload\\");
+                existingCategory.LogoUrl = updateCategoryDto.LogoImg.UploadFile(folderName: "C:\\Users\\II novbe\\Desktop\\Api_project\\App.BUSINESS\\Upload\\");
+                existingCategory.UpdatedAt=DateTime.Now;
             }
             _repo.Update(existingCategory);
             _repo.Save();

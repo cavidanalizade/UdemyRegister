@@ -2195,19 +2195,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\User\\.nuget\\packages\\": {}
+    "C:\\Users\\II novbe\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\User\\Desktop\\Repos\\Api_Ntire\\App.BUSINESS\\App.BUSINESS.csproj",
+      "projectUniqueName": "C:\\Users\\II novbe\\Desktop\\Api_project\\App.BUSINESS\\App.BUSINESS.csproj",
       "projectName": "App.BUSINESS",
-      "projectPath": "C:\\Users\\User\\Desktop\\Repos\\Api_Ntire\\App.BUSINESS\\App.BUSINESS.csproj",
-      "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\User\\Desktop\\Repos\\Api_Ntire\\App.BUSINESS\\obj\\",
+      "projectPath": "C:\\Users\\II novbe\\Desktop\\Api_project\\App.BUSINESS\\App.BUSINESS.csproj",
+      "packagesPath": "C:\\Users\\II novbe\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\II novbe\\Desktop\\Api_project\\App.BUSINESS\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\II novbe\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -2221,8 +2221,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\User\\Desktop\\Repos\\Api_Ntire\\App.DAL\\App.DAL.csproj": {
-              "projectPath": "C:\\Users\\User\\Desktop\\Repos\\Api_Ntire\\App.DAL\\App.DAL.csproj"
+            "C:\\Users\\II novbe\\Desktop\\Api_project\\App.DAL\\App.DAL.csproj": {
+              "projectPath": "C:\\Users\\II novbe\\Desktop\\Api_project\\App.DAL\\App.DAL.csproj"
             }
           }
         }
@@ -2274,7 +2274,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
       }
     }
   }
