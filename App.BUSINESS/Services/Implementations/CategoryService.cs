@@ -100,8 +100,8 @@ namespace App.BUSINESS.Services.Implementations
             existingCategory.Name = updateCategoryDto.Name;
             if (updateCategoryDto.LogoImg != null)
             {
-                existingCategory.LogoUrl.RemoveFile("C:\\Users\\User\\Desktop\\Repos\\Udemy\\App.BUSINESS\\Upload\\");
-                existingCategory.LogoUrl = updateCategoryDto.LogoImg.UploadFile(folderName: "C:\\Users\\User\\Desktop\\Repos\\Udemy\\App.BUSINESS\\Upload\\");
+                existingCategory.LogoUrl.RemoveFile("C:\\Users\\II novbe\\Desktop\\New folder (4)\\Udemy\\App.BUSINESS\\Upload\\");
+                existingCategory.LogoUrl = updateCategoryDto.LogoImg.UploadFile(folderName: "C:\\Users\\II novbe\\Desktop\\New folder (4)\\Udemy\\App.BUSINESS\\Upload\\");
             }
 
             _repo.Update(existingCategory);
